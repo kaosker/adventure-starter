@@ -1,3 +1,5 @@
+const { Room } = require("./room");
+
 class Player {
 
     constructor(name, startingRoom) {
@@ -32,8 +34,7 @@ class Player {
     }
 
     takeItem(itemName) {
-
-        // Fill this in
+    this.items.push(this.getItemByName(itemName));
 
     }
 
@@ -48,8 +49,7 @@ class Player {
     }
 
     getItemByName(name) {
-
-        // Fill this in
+       return this.items.find(item => item.name === name);
     }
 }
 
