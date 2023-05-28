@@ -1,3 +1,4 @@
+const { Food } = require("./food");
 const { Room } = require("./room");
 
 class Player {
@@ -34,17 +35,31 @@ class Player {
     }
 
     takeItem(itemName) {
-    this.items.push(this.getItemByName(itemName));
+        const item = this.currentRoom.getItemByName(itemName);
 
+        if (item) {
+            this.items.push(item);
+            let indexNum = this.currentRoom.items.indexOf(item);
+            this.currentRoom.items.splice(indexNum, 1); // first way of doing in IMO better readability
+        }
     }
 
     dropItem(itemName) {
+        const item = this.getItemByName(itemName);
 
-        // Fill this in
+        if (item) {
+            this.currentRoom.items.push(item);
+            this.items.splice(this.items.indexOf(item), 1); // here i splice the item, and also find the location of item in the same code line
+        }
+
     }
 
     eatItem(itemName) {
-        // Fill this in
+        const item = this.getItemByName(itemName);
+
+        if (item instanceof Food) {
+            this.items.splice(this.items.indexOf(item), 1);
+        }
 
     }
 

@@ -42,6 +42,7 @@ module.exports = {
             description: "A tasty looking sandwich",
             room: 2,
             isFood: true
-        }
+        },
+
     ]
 }
